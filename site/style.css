@@ -1,0 +1,89 @@
+:root {
+  color-scheme: dark;
+  --paper: #1c1c19;
+  --ink: #eee9dd;
+  --muted: #bdb6a7;
+  --line: #454239;
+  --rule: #80796d;
+  --wash: #262521;
+  --accent: #e2a17e;
+  --masthead: #141411;
+  --mono: ui-monospace, "Liberation Mono", monospace;
+  --serif: Georgia, serif;
+  --gutter: clamp(16px, 4vw, 64px);
+}
+* {box-sizing: border-box}
+[hidden] {display: none !important}
+body {margin: 0; color: var(--ink); background: var(--paper); font: 1rem/1.55 system-ui, sans-serif}
+a {color: var(--accent); text-underline-offset: .18em}
+a:hover {color: var(--ink)}
+:focus-visible {outline: 2px solid var(--accent); outline-offset: 3px}
+.sr-only,.skip:not(:focus) {position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%)}
+.skip:focus {position: fixed; z-index: 1; top: 8px; left: 8px; background: var(--paper); padding: 8px}
+.frame {max-width: 1440px; margin-inline: auto; padding-inline: var(--gutter)}
+.masthead {background: var(--masthead)}
+.header-inner {display: flex; align-items: stretch; min-height: 60px; gap: clamp(12px,4vw,48px)}
+.wordmark {align-self: center; color: var(--ink); font: bold clamp(1.1rem,3vw,1.5rem) var(--serif); letter-spacing: -.03em; text-decoration: none}
+.current {display: grid; align-items: center; padding: 0 10px; border-bottom: 3px solid var(--accent); font-size: .875rem}
+.method {margin-left: auto; align-self: center; font-size: .875rem}
+main {padding-top: 28px}
+.title-row,.panel-head,.coverage {display: flex; align-items: center; justify-content: space-between; gap: 16px}
+.title-row {margin-bottom: 22px}
+h1 {margin: 0; font: 400 clamp(2.25rem,5vw,3.75rem)/1.08 var(--serif); letter-spacing: -.055em}
+h2 {margin: 0; font-size: 1rem; font-weight: 700}
+.intro {margin: 7px 0 0; color: var(--muted)}
+.archive {display: grid; gap: 3px; font-size: .875rem; color: var(--muted); min-width: 12rem}
+.archive select {
+  appearance: none; min-height: 42px; padding: 6px 34px 6px 10px; color: var(--ink);
+  border: 1px solid var(--rule); border-radius: 0; font: .875rem var(--mono);
+  background: linear-gradient(45deg,transparent 50%,var(--muted) 50%) right 15px center/5px 5px no-repeat,
+              linear-gradient(135deg,var(--muted) 50%,transparent 50%) right 10px center/5px 5px no-repeat var(--paper);
+}
+.coverage {margin-bottom: 9px; flex-wrap: wrap; gap: 5px 14px}
+.coverage time {font: .875rem var(--mono)}
+.coverage span,.meta {color: var(--muted); font-size: .875rem}
+.notice {padding: 10px 0; border-block: 1px solid var(--line)}
+.telemetry {margin: 0 0 26px; display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule)}
+.telemetry > div {padding: 10px 12px; min-width: 0; border-left: 1px solid var(--line)}
+.telemetry > div:first-child {border-left: 0; padding-left: 0}
+.telemetry dt {font-size: .875rem; font-weight: 650}
+.telemetry dd {margin: 0; font: clamp(1.15rem,3vw,1.85rem)/1.4 var(--mono); letter-spacing: -.06em}
+.sections {display: grid; grid-template-columns: minmax(0,1.65fr) minmax(0,1fr); gap: 30px; margin-bottom: 26px}
+.panel {min-width: 0; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule)}
+.brief {border-top-color: var(--accent)}
+.panel-head {min-height: 46px; padding-block: 8px; border-bottom: 1px solid var(--line)}
+.trend {padding: 15px 0 0}
+.plot {display: grid; grid-template-columns: 3rem minmax(0,1fr); height: 150px}
+.scale {display: flex; flex-direction: column; justify-content: space-between; font: .75rem var(--mono); color: var(--muted)}
+.bars {
+  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0,1fr); align-items: end;
+  gap: 3px; border-bottom: 1px solid var(--rule);
+  background: repeating-linear-gradient(to top,transparent 0 calc(25% - 1px),var(--line) calc(25% - 1px) 25%);
+}
+.bar {height: var(--height); background: #c98261; min-height: 2px}
+.bar.missing {height: 0; min-height: 0; background: transparent}
+.chart-axis {display: flex; justify-content: space-between; margin: 6px 0 0 3rem; color: var(--muted); font: .75rem var(--mono)}
+.chart-note {margin: 9px 0}
+.chart-data {border-top: 1px solid var(--line); font-size: .875rem}
+.chart-data summary {padding: 8px 0; cursor: pointer}
+.table-scroll {max-height: 16rem; overflow: auto}
+table {width: 100%; border-collapse: collapse; text-align: left; font-variant-numeric: tabular-nums}
+th,td {padding: 6px 8px; border-bottom: 1px solid var(--line)}
+th {background: var(--wash)}
+.findings {padding-left: 1.25rem; margin: 0}
+.findings li {padding: 8px 0; border-bottom: 1px solid var(--line)}
+.findings li:last-child {border-bottom: 0}
+.findings p {margin: 0 0 4px}
+.findings a {display: inline-block; margin-right: 8px; font: .75rem var(--mono); overflow-wrap: anywhere}
+.brief-status:empty {display: none}
+.source-links,.footer {display: flex; gap: 8px 20px; flex-wrap: wrap; padding-block: 10px; font-size: .875rem}
+.footer {justify-content: space-between; color: var(--muted); margin-block: 16px 10px}
+@media (max-width: 760px) {
+  .header-inner {min-height: 54px}
+  .current {padding-inline: 4px}
+  .title-row {align-items: start; flex-wrap: wrap}
+  .sections {grid-template-columns: minmax(0,1fr)}
+  .telemetry {grid-template-columns: repeat(3,minmax(0,1fr))}
+  .telemetry > div:nth-child(3n+1) {border-left: 0; padding-left: 0}
+  .telemetry > div:nth-child(n+4) {border-top: 1px solid var(--line)}
+}

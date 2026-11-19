@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "day_utc": "2026-11-18",
+  "stats": {
+    "schema_version": 1,
+    "day_utc": "2026-11-18",
+    "window": {
+      "start_utc": "2026-11-18T00:00:00+00:00",
+      "end_utc_exclusive": "2026-11-19T00:00:00+00:00"
+    },
+    "coverage": {
+      "hours_with_cowrie_events": 5,
+      "status": "unverified"
+    },
+    "metrics": {
+      "connections": 97,
+      "unique_source_ips": 21,
+      "sessions_with_accepted_login": 18,
+      "failed_login_attempts": 34,
+      "sessions_with_commands": 14,
+      "shell_commands": 241,
+      "host_verified_captures": 0,
+      "unique_host_verified_samples": 0,
+      "backend_connection_errors": 2
+    },
+    "evidence_id": "day-2026-11-18"
+  },
+  "brief": {
+    "model": "deepseek/deepseek-v4.1-flash",
+    "prompt_version": "field-journal-1",
+    "state": "ready",
+    "findings": [
+      {
+        "kind": "daily",
+        "evidence_ids": [
+          "day-2026-11-18:backend_connection_errors"
+        ],
+        "text": "Cowrie recorded 2 guest backend connection errors in the UTC reporting window."
+      }
+    ]
+  }
+}

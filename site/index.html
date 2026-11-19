@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="An experiment in AI-assisted threat intelligence using aggregate Cowrie honeypot telemetry.">
+  <title>Daily Brief | Cowrie Field Journal</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to brief</a>
+  <header class="masthead">
+    <div class="frame header-inner">
+      <a class="wordmark" href="./">Cowrie Field Journal</a>
+      <span class="current" aria-current="page">Daily Brief</span>
+      <a class="method" href="https://github.com/kieran-gannon/cowrie-field-journal/blob/main/METHODOLOGY.md">Methodology</a>
+    </div>
+  </header>
+  <main id="main" class="frame">
+    <div class="title-row">
+      <div>
+        <h1>Daily Brief</h1>
+        <p class="intro">An experiment in AI-assisted threat intelligence from one SSH honeypot.</p>
+      </div>
+      <label class="archive" for="archive">Report date · UTC
+        <select id="archive" disabled>
+          <option>Loading dates</option>
+        </select>
+      </label>
+    </div>
+    <p class="notice" id="status" role="status">Loading the latest report…</p>
+    <div id="report" hidden>
+      <div class="coverage">
+        <time id="report-day"></time>
+        <span id="coverage"></span>
+      </div>
+      <dl class="telemetry" id="metrics" aria-label="Daily measurements"></dl>
+
+      <div class="sections">
+        <section class="panel" aria-labelledby="trend-heading">
+          <div class="panel-head">
+            <h2 id="trend-heading">Connections over time</h2>
+            <span class="meta">Daily · UTC</span>
+          </div>
+          <div class="trend" id="trend">
+            <div class="plot" aria-hidden="true"><div id="chart-scale" class="scale"></div><div id="chart-bars" class="bars"></div></div>
+            <div class="chart-axis" aria-hidden="true"><span id="chart-start"></span><span id="chart-end"></span></div>
+          </div>
+          <p class="meta chart-note" id="trend-summary"></p>
+          <details class="chart-data">
+            <summary>View daily counts</summary>
+            <div class="table-scroll">
+              <table>
+                <caption class="sr-only">Daily connection counts and observed event hours in UTC</caption>
+                <thead><tr><th scope="col">Day (UTC)</th><th scope="col">Connections</th><th scope="col">Event hours</th></tr></thead>
+                <tbody id="chart-table"></tbody>
+              </table>
+            </div>
+          </details>
+        </section>
+
+        <section class="panel brief" aria-labelledby="brief-heading">
+          <div class="panel-head"><h2 id="brief-heading">DeepSeek's findings</h2></div>
+          <p class="meta">AI experiment · findings selected by a model and phrased from the cited evidence.</p>
+          <p id="brief-status" class="brief-status"></p>
+          <ol class="findings" id="findings"></ol>
+          <p class="meta" id="model"></p>
+        </section>
+      </div>
+      <section class="panel sources" aria-labelledby="data-heading">
+        <div class="panel-head"><h2 id="data-heading">Data and provenance</h2></div>
+        <div class="source-links">
+          <a id="report-json">Report JSON</a>
+          <a id="context-json">Exact public model input</a>
+          <a href="https://github.com/kieran-gannon/cowrie-field-journal/blob/main/METHODOLOGY.md">Collection, aggregation and validation methods</a>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="frame footer"><span>Single-sensor observations · dates in UTC</span><a href="https://github.com/kieran-gannon/cowrie-field-journal">Source on GitHub</a></footer>
+</body>
+</html>
