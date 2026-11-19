@@ -118,6 +118,11 @@ async function init() {
       $('status').textContent = 'No daily briefs have been published yet.';
       return;
     }
+    const expectedDay = new Date(Date.now() - (24 * 60 + 30) * 60000).toISOString().slice(0, 10);
+    if (days[0] < expectedDay) {
+      $('freshness').textContent = `Latest available brief is ${days[0]} UTC. A more recent day has not been published.`;
+      $('freshness').hidden = false;
+    }
     $('archive').replaceChildren(...days.map(day => new Option(day, day)));
     $('archive').disabled = false;
     const requested = new URLSearchParams(location.search).get('day');

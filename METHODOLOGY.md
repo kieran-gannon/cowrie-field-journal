@@ -47,3 +47,9 @@ A daily report reflects one sensor's observations and exposure. Source infrastru
 ## Local verification
 
 Run `python -m unittest discover -s tests -v` to exercise UTC boundaries, privacy exclusions, recurrence, session linkage, and brief validation against synthetic fixtures. Run `python -m http.server --directory site` to preview the public files. Raw telemetry is required to reproduce the original collection and extraction. The published aggregate input is sufficient to verify the values and evidence references used in the brief.
+
+## Automatic publication
+
+The VPS runs the [publisher](scripts/publish_day.py) at 00:20 UTC using the [systemd service and timer](deploy/). It reads the previous UTC day's data and validates every field of the public export before calling the model. The publisher commits only the daily report, its exact public input, and the archive index. A repository-specific deploy key authorizes that push. GitHub Actions deploys only the static site directory.
+
+A date already in the archive is skipped. A failed model call still produces the aggregate report. An export with no retained observations leaves a gap. If validation or the Git push fails, no report is added and systemd retries up to the service's start limit. The site displays its latest published date. The timer handles the latest completed day, so older missed dates require an explicit backfill.

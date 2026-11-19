@@ -1,0 +1,25 @@
+[Unit]
+Description=Publish the previous UTC day's Cowrie field journal
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=1h
+StartLimitBurst=3
+
+[Service]
+Type=oneshot
+User=cowrie-journal
+SupplementaryGroups=cowrie-dashboard
+Environment=HOME=/var/empty
+EnvironmentFile=/etc/cowrie-dashboard/analyst.env
+LoadCredential=git-key:/etc/cowrie-field-journal/git-key
+LoadCredential=alias-key:/etc/cowrie-field-journal/alias-key
+Environment="GIT_SSH_COMMAND=ssh -F /dev/null -o BatchMode=yes -o StrictHostKeyChecking=yes -o IdentitiesOnly=yes -o UserKnownHostsFile=/etc/cowrie-field-journal/github-known-hosts -i %d/git-key"
+ExecStart=/usr/bin/python3 /opt/cowrie-field-journal/scripts/publish_day.py --db /var/lib/cowrie-dashboard/events.sqlite3 --alias-key-file %d/alias-key
+TimeoutStartSec=300
+Restart=on-failure
+RestartSec=5min
+UMask=0077
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
