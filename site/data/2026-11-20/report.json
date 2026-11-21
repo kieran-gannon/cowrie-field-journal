@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "day_utc": "2026-11-20",
+  "stats": {
+    "schema_version": 1,
+    "day_utc": "2026-11-20",
+    "window": {
+      "start_utc": "2026-11-20T00:00:00+00:00",
+      "end_utc_exclusive": "2026-11-21T00:00:00+00:00"
+    },
+    "coverage": {
+      "hours_with_cowrie_events": 24,
+      "status": "unverified"
+    },
+    "metrics": {
+      "connections": 8302,
+      "unique_source_ips": 161,
+      "sessions_with_accepted_login": 3627,
+      "failed_login_attempts": 2158,
+      "sessions_with_commands": 1620,
+      "shell_commands": 15127,
+      "host_verified_captures": 96,
+      "unique_host_verified_samples": 4,
+      "backend_connection_errors": 19
+    },
+    "evidence_id": "day-2026-11-20"
+  },
+  "brief": {
+    "model": "deepseek/deepseek-v4.1-flash",
+    "prompt_version": "field-journal-1",
+    "state": "ready",
+    "findings": [
+      {
+        "kind": "daily",
+        "evidence_ids": [
+          "day-2026-11-20:connections"
+        ],
+        "text": "Cowrie recorded 8,302 connections in the UTC reporting window."
+      },
+      {
+        "kind": "daily",
+        "evidence_ids": [
+          "day-2026-11-20:host_verified_captures"
+        ],
+        "text": "Cowrie recorded 96 host-verified file captures in the UTC reporting window."
+      },
+      {
+        "kind": "recurrence",
+        "evidence_ids": [
+          "sample-afb482a4e45327b5cad9"
+        ],
+        "text": "The same bytes (sample-afb482a4e45327b5cad9) were verified on 3 UTC days in the reporting window and its 30 prior days. The current day accounted for 47 captures. Cowrie also logged download attempts in 1 of the sessions with a capture. The delivery path and process execution are unverified."
+      }
+    ]
+  }
+}
